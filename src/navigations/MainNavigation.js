@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import HomeNavigation from "./HomeNavigation";
-
+import ProfileDetails from "../components/Profile/ProfileDetails";
 const Tab = createBottomTabNavigator();
 
 const MainNavigation = () => {
@@ -20,7 +20,7 @@ const MainNavigation = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={HomeNavigation}
+        component={ProfileDetails}
         options={{
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => (
