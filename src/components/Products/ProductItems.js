@@ -1,11 +1,28 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import ProductList from "./ProductData";
+import { useNavigation } from "@react-navigation/native";
+const ProductItems = ({ item }) => {
+  const { price, name, image } = item;
+  const navigation = useNavigation();
 
-const ProductItems = () => {
   return (
-    <View style={styles.container}>
-      <Text>Product Items</Text>
-    </View>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Products", { item: item })}
+    >
+      <Text> Name: {name}</Text>
+      <Text> Price: {price}</Text>
+      <Image
+        source={image}
+        style={{
+          width: 300,
+          height: 300,
+          borderRadius: 10,
+          marginTop: 50,
+          marginLeft: 30,
+        }}
+      />
+    </TouchableOpacity>
   );
 };
 
