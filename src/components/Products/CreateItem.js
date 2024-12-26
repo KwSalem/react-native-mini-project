@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const CreateItem = ({ navigation }) => {
+const CreateItem = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
+
+  const navigation = useNavigation();
 
   const handleCreate = () => {
     const newItem = {

@@ -1,15 +1,15 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-const ProductsView = ({ route }) => {
-  const { item } = route.params;
-  console.log(item);
-  const { price, name, image } = item;
+const ProductDetails = ({ route }) => {
+  const { post } = route.params;
+  console.log(post);
+  const { title, description } = post;
 
   return (
     <View>
-      <Text> Name: {name}</Text>
-      <Text> Price: {price}</Text>
-      <Image
+      <Text> Title: {title}</Text>
+      <Text> Description: {description}</Text>
+      {/* <Image
         source={image}
         style={{
           width: 300,
@@ -18,7 +18,7 @@ const ProductsView = ({ route }) => {
           marginTop: 50,
           marginLeft: 30,
         }}
-      />
+      /> */}
     </View>
   );
 };
@@ -40,4 +40,4 @@ const ProductsView = ({ route }) => {
 //   );
 // };
 
-export default ProductsView;
+export default ProductDetails;

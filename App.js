@@ -1,9 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import HomePage from "./src/components/Home/HomePage";
-import ProductsView from "./src/components/Products/ProductsView";
 import { NavigationContainer } from "@react-navigation/native";
-import HomeNavigation from "./src/navigations/HomeNavigation";
 import MainNavigation from "./src/navigations/MainNavigation";
 
 export default function App() {
