@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import HomeNavigation from "./HomeNavigation";
 import ProfileDetails from "../components/Profile/ProfileDetails";
+import CreateItem from "../components/Products/CreateItem";
 const Tab = createBottomTabNavigator();
 
 const MainNavigation = () => {
@@ -15,6 +16,17 @@ const MainNavigation = () => {
           tabBarLabel: "Home",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="CreateItem"
+        component={CreateItem}
+        options={{
+          tabBarLabel: "Create",
+
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="add" color={color} size={size} />
           ),
         }}
       />
