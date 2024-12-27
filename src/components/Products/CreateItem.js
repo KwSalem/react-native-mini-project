@@ -1,50 +1,41 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { addNewPost } from "../../apis/auth";
 
 const CreateItem = () => {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
-
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const navigation = useNavigation();
 
-  const handleCreate = () => {
-    const newItem = {
-      id: Math.random().toString(),
-      name,
-      price,
-      image,
+  const handleCreate = async () => {
+    const newPost = {
+      title,
+      description,
     };
-    navigation.navigate("Products", { item: newItem });
+    await addNewPost(newPost);
+    navigation.navigate("Home");
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Create Item</Text>
+      <Text style={styles.title}>Create Post</Text>
       <TextInput
         style={styles.input}
-        placeholder="Name"
-        value={name}
-        onChangeText={(text) => setName(text)}
+        placeholder="Title"
+        value={title}
+        onChangeText={(text) => setTitle(text)}
       />
       <TextInput
         style={styles.input}
-        placeholder="Price"
-        value={price}
-        onChangeText={(text) => setPrice(text)}
+        placeholder="Description"
+        value={description}
+        onChangeText={(text) => setDescription(text)}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Image URL"
-        value={image}
-        onChangeText={(text) => setImage(text)}
-      />
-      <Button title="Create Item" onPress={handleCreate} />
+      <Button title="Create Post" onPress={handleCreate} />
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
