@@ -8,7 +8,6 @@ import HomePage from "../components/Home/HomePage";
 import ProductItems from "../components/Products/ProductItem";
 import ProductDetails from "../components/Products/ProductDetails";
 import { NavigationContainer } from "@react-navigation/native";
-import Posts from "../components/Posts";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 const Stack = createNativeStackNavigator();
