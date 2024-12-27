@@ -1,14 +1,29 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Button } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import { deleteSinglePost } from "../../apis/auth";
+
 const ProductDetails = ({ route }) => {
+  const navigation = useNavigation();
   const { post } = route.params;
   console.log(post);
   const { title, description } = post;
+
+  const handleDelete = async () => {
+    await deleteSinglePost(post.id);
+    navigation.navigate("ProductList");
+  };
 
   return (
     <View>
       <Text> Title: {title}</Text>
       <Text> Description: {description}</Text>
+      <Button
+        title="Delete"
+        onPress={() => {
+          handleDelete();
+        }}
+      />
       {/* <Image
         source={image}
         style={{
