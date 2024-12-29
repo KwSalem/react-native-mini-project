@@ -2,16 +2,17 @@ import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import ProductList from "./ProductList";
 import { useNavigation } from "@react-navigation/native";
-const ProductItem = ({ post }) => {
+const ProductItem = ({ post, comments }) => {
   const { title, description } = post;
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("ProductDetails", { post })}
+      onPress={() => navigation.navigate("ProductDetails", { post, comments })}
     >
-      <Text> title: {title}</Text>
-      <Text> description: {description}</Text>
+      {/* <Text> title: {title}</Text>
+      <Text> description: {description}</Text> */}
+      <Text>Comments: it is, {comments}</Text>
       {/* <Image
         source={image}
         style={{

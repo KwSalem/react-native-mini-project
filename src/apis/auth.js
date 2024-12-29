@@ -24,16 +24,22 @@ async function deleteSinglePost(id) {
   return response;
 }
 
-async function addCommentPost(id) {
-  const response = await instance.post(`/posts/${id}/comments`); // adding comment to post.
-  console.log("addCommentPost", response);
-  return response;
+async function addCommentPost(formData) {
+  const { username, comment, postId } = formData;
+  console.log("Add Post initial", postId);
+  const data = await instance.post(`/${postId}/comments`, {
+    username,
+    comment,
+  });
+  console.log("Add Post ", data);
+  return data;
 }
 
-async function deleteCommentPost(id) {
-  const response = await instance.delete(`/posts/comments/${id}`); //  deleting comment to post.
-  console.log("deleteCommentPost", response);
-  return response;
+async function deleteCommentPost(commentId) {
+  console.log("Delete Comment", commentId);
+  const data = await instance.delete(`/comments/${commentId}`);
+  console.log("Delete Comment ", data);
+  return data;
 }
 
 export {
