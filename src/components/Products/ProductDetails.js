@@ -1,14 +1,22 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, TextInput } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { deleteSinglePost } from "../../apis/auth";
+import { addCommentPost } from "../../apis/auth";
 
 const ProductDetails = ({ route }) => {
   const navigation = useNavigation();
   const { post } = route.params;
   console.log(post);
   const { title, description } = post;
-
+  const handleAddComment = async () => {
+    const comment = {
+      postId: post.id,
+      body: "This is a comment",
+    };
+    await addCommentPost(comment);
+    navigation.navigate("ProductList");
+  };
   const handleDelete = async () => {
     await deleteSinglePost(post.id);
     navigation.navigate("ProductList");
@@ -18,12 +26,10 @@ const ProductDetails = ({ route }) => {
     <View>
       <Text> Title: {title}</Text>
       <Text> Description: {description}</Text>
-      <Button
-        title="Delete"
-        onPress={() => {
-          handleDelete();
-        }}
-      />
+      <Button title="Delete" onPress={handleDelete} />
+      <Text>Comments</Text>
+      <TextInput placeholder="Comment" />
+      <Button title="Add Comment" onPress={handleAddComment} />
       {/* <Image
         source={image}
         style={{
